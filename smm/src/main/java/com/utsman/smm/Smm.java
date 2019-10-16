@@ -12,12 +12,11 @@ import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
-import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Message {
+public class Smm {
 
     public static void subscribe(final Context context, final String topic, final DataListener dataListener) {
         try {
@@ -67,7 +66,7 @@ public class Message {
                                     }
 
                                     @Override
-                                    public void messageArrived(String topicReceiver, MqttMessage message) {
+                                    public void messageArrived(String topicReceiver, org.eclipse.paho.client.mqttv3.MqttMessage message) {
                                         try {
                                             JSONObject jsonObject = new JSONObject(new String(message.getPayload()));
                                             String clientIdJson = jsonObject.getString("clientId");
@@ -131,13 +130,13 @@ public class Message {
                 mqttConnectOptions.setUserName(username);
                 mqttConnectOptions.setPassword(password != null ? password.toCharArray() : new char[0]);
 
-                final MqttAndroidClient mqttAndroidClient = new MqttAndroidClient(context, server, clientId, new MemoryPersistence());
+                final MqttAndroidClient mqttAndroidClient = new MqttAndroidClient(context, server, clientId + "_sender", new MemoryPersistence());
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("clientId", clientId);
                 jsonObject.put("data", data);
 
                 final byte[] bytes = String.valueOf(jsonObject).getBytes();
-                final MqttMessage mqttMessage = new MqttMessage();
+                final org.eclipse.paho.client.mqttv3.MqttMessage mqttMessage = new org.eclipse.paho.client.mqttv3.MqttMessage();
                 mqttMessage.setPayload(bytes);
 
                 try {

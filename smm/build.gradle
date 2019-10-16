@@ -12,7 +12,7 @@ ext {
 
     publishedGroupId = 'com.utsman.messaging'
     artifact = 'smm'
-    libraryVersion = '1.0.8'
+    libraryVersion = '1.0.10'
 
     libraryDescription = 'Simple client MQTT for android'
     siteUrl = 'https://github.com/utsmannn/Simple-Messaging-MQTT'
@@ -35,7 +35,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0.8"
+        versionName "1.0.10"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'

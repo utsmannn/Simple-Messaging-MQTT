@@ -7,7 +7,6 @@
 
     <application>
         <service android:name="org.eclipse.paho.android.service.MqttService"
-            android:exported="true"
             android:process=":background"/>
     </application>
 
