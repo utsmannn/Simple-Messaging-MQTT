@@ -177,13 +177,14 @@ public class Message {
 
 
                             } catch (MqttException e) {
-                                //e.printStackTrace();
+                                e.printStackTrace();
                                 Log.e("anjay", "onFailure: subscribe", e.fillInStackTrace());
                             }
                         }
 
                         @Override
                         public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+                            exception.printStackTrace();
                             Log.e("not metadata", "Check your manifest");
                         }
                     });
