@@ -45,7 +45,7 @@ In ```AndroidManifest.xml```, add the following element as a child of the ```<ap
 
 ### Setup receiver in activity or fragment or service
 ```kotlin
-Message.subscribe(context, "topic") { senderId, data ->
+Smm.subscribe(context, "topic") { senderId, data ->
     // message arrived with JSONObject data
     val name = data.getString("name")
 }
@@ -58,7 +58,7 @@ val data = JSONObject()
 data.putString("name", "Sarah")
 
 // publish your data
-Message.publish(context, "topic", data)
+Smm.publish(context, "topic", data)
 ```
 
 ---
